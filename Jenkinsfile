@@ -65,7 +65,7 @@ pipeline {
         }
 
         stage('Update Docker UAT image') {
-            when { branch "master" }
+//            when { branch "master" }
             steps {
                 sh '''
 					docker login -u "sagdeshm1" -p "Happy@123"
@@ -78,7 +78,7 @@ pipeline {
         }
 
         stage('Update UAT container') {
-            when { branch "master" }
+//            when { branch "master" }
             steps {
                 sh '''
 					docker login -u "sagdeshm1" -p "Happy@123"
