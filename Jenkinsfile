@@ -22,30 +22,30 @@ pipeline {
             }
         }
 
-        stage('Check Style, FindBugs, PMD') {
-            steps {
-                sh './gradlew --no-daemon checkstyleMain checkstyleTest findbugsMain findbugsTest pmdMain pmdTest cpdCheck'
-            }
-			post {
-				always {
-					step([
-						$class         : 'FindBugsPublisher',
-						pattern        : 'build/reports/findbugs/*.xml',
-						canRunOnFailed : true
-					])
-					step([
-						$class         : 'PmdPublisher',
-						pattern        : 'build/reports/pmd/*.xml',
-						canRunOnFailed : true
-					])
-					step([
-						$class: 'CheckStylePublisher', 
-						pattern: 'build/reports/checkstyle/*.xml',
-						canRunOnFailed : true
-					])
-				}
-			}
-        }
+//        stage('Check Style, FindBugs, PMD') {
+//            steps {
+//                sh './gradlew --no-daemon checkstyleMain checkstyleTest findbugsMain findbugsTest pmdMain pmdTest cpdCheck'
+//            }
+//			post {
+//				always {
+//					step([
+//						$class         : 'FindBugsPublisher',
+//						pattern        : 'build/reports/findbugs/*.xml',
+//						canRunOnFailed : true
+//					])
+//					step([
+//						$class         : 'PmdPublisher',
+//						pattern        : 'build/reports/pmd/*.xml',
+//						canRunOnFailed : true
+//					])
+//					step([
+//						$class: 'CheckStylePublisher',
+//						pattern: 'build/reports/checkstyle/*.xml',
+//						canRunOnFailed : true
+//					])
+//				}
+//			}
+//        }
 		
 		stage('Test') {
             steps {
