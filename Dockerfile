@@ -28,7 +28,7 @@ RUN chmod 755 $PERSON_HOME/person.jar
 # Expose default servlet container port
 EXPOSE 9090
 
-VOLUME bin
+VOLUME /bin
 
 # Main command
 ENTRYPOINT ["/bin/sh", "/opt/bin/entrypoint.sh"]

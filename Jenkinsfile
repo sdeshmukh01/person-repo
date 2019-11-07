@@ -72,14 +72,13 @@ pipeline {
                     docker build --no-cache -t person .
                     docker tag person:latest sagdeshm1/person:latest
                     docker push sagdeshm1/person:latest
+		                                docker.withRegistry('https://061369422772.dkr.ecr.ap-south-1.amazonaws.com', 'ecr:ap-south-1:AKIAQ4SPHCO2BNGETROM') {
+            docker.image('person').push('latest')
 					docker rmi person:latest
                 '''
             }
         }
-        stage 'Docker push to ECR'
-        docker.withRegistry('https://061369422772.dkr.ecr.ap-south-1.amazonaws.com', 'ecr:ap-south-1:AKIAQ4SPHCO2BNGETROM') {
-            docker.image('person').push('latest')
-        }
+
         stage('Update UAT container') {
 //            when { branch "master" }
             steps {
